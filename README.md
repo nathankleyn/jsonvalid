@@ -18,7 +18,7 @@ If an architecture of your choice is not available, you don't want to use `cargo
 
 ```
 ➜  jsonvalid --help
-JSON Valid 0.1.0
+JSON Valid X.Y.Z
 Nathan Kleyn <nathan@nathankleyn.com>
 Checks whether JSON is valid and well-formed.
 

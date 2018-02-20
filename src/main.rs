@@ -9,9 +9,11 @@ use serde_json::{Value, Error};
 use std::fs::File;
 use std::io::Read;
 
+const VERSION: &'static str = env!("CARGO_PKG_VERSION");
+
 fn main() {
     let args = App::new("JSON Valid")
-        .version("0.1.0")
+        .version(VERSION)
         .author("Nathan Kleyn <nathan@nathankleyn.com>")
         .about("Checks whether JSON is valid and well-formed.")
         .arg(Arg::from_usage("[FILE]... 'files to validate; if none are given, it will read from stdin instead'"))
