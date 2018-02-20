@@ -1,0 +1,12 @@
+[package]
+name = "jsonvalid"
+version = "0.1.0"
+authors = ["Nathan Kleyn <nathan@nathankleyn.com>"]
+
+[dependencies]
+clap = "2.30.0"
+serde_json = "1.0"
+
+[dev-dependencies]
+assert_cli = "0.5.4"
+tempfile = "2.2.0"
