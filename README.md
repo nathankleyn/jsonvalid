@@ -4,9 +4,15 @@ Validate JSON files for syntax mistakes using a static binary that can be easily
 
 ## Install
 
-You can download the latest release of JSON Valid from the [GitHub releases page](https://github.com/nathankleyn/jsonvalid/releases). Make sure to pick the appropriate static binary for your architecture.
+You can easily install this using Cargo:
 
-If an architecture of your choice is not available, or you want to compile the latest code, you can do a simple `cargo build --release` in the cloned out version of this repository to get a binary (only stable Rust is required).
+```
+cargo install jsonvalid
+```
+
+Alternatively, you can download a pre-built binary of JSON Valid from the [GitHub releases page](https://github.com/nathankleyn/jsonvalid/releases). Make sure to pick the appropriate static binary for your architecture.
+
+If an architecture of your choice is not available, you don't want to use `cargo install`, or you want to compile the latest code, you can do a simple `cargo build --release` in the cloned out version of this repository to get a binary (only stable Rust is required).
 
 ## Usage
 
