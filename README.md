@@ -48,7 +48,7 @@ If there is an error, you will see detailed information as to where it occurred:
 1
 ```
 
-### Using paths to files
+### Using paths to files
 
 We can also use files instead of STDIN:
 
@@ -83,7 +83,7 @@ We can also pass many files. If any of the files is invalid, the whole command f
 1
 ```
 
-## Background
+## Background
 
 I wanted a way to easily validate the well-formedness of JSON files without the following:
 
