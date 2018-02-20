@@ -2,6 +2,13 @@
 name = "jsonvalid"
 version = "0.1.0"
 authors = ["Nathan Kleyn <nathan@nathankleyn.com>"]
+description = "Validate JSON files for syntax mistakes using a static binary that can be easily distributed!"
+license = "MIT/Apache-2.0"
+repository = "https://github.com/nathankleyn/jsonvalid"
+readme = "README.md"
+
+[badges]
+travis-ci = { repository = "nathankleyn/jsonvalid" }
 
 [dependencies]
 clap = "2.30.0"
