@@ -24,6 +24,14 @@ fn test_stdin_valid_json() {
 }
 
 #[test]
+fn test_stdin_valid_with_unicode_bom() {
+    assert_cli::Assert::main_binary()
+        .stdin("\u{FEFF}{ \"foo\": \"bar\" }")
+        .succeeds()
+        .unwrap();
+}
+
+#[test]
 fn test_files_single_invalid() {
     let mut file: NamedTempFile = NamedTempFile::new().unwrap();
     write!(file, "{{ \"foo\": \"bar\"").unwrap();
@@ -40,6 +48,17 @@ fn test_files_single_invalid() {
 fn test_files_single_valid() {
     let mut file: NamedTempFile = NamedTempFile::new().unwrap();
     write!(file, "{{ \"foo\": \"bar\" }}").unwrap();
+
+    assert_cli::Assert::main_binary()
+        .with_args(&[file.path().to_str().unwrap()])
+        .succeeds()
+        .unwrap();
+}
+
+#[test]
+fn test_files_single_valid_with_unicode_bom() {
+    let mut file: NamedTempFile = NamedTempFile::new().unwrap();
+    write!(file, "\u{FEFF}{{ \"foo\": \"bar\" }}").unwrap();
 
     assert_cli::Assert::main_binary()
         .with_args(&[file.path().to_str().unwrap()])

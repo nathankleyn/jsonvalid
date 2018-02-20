@@ -1,7 +1,9 @@
 extern crate clap;
+extern crate encoding_rs;
 extern crate serde_json;
 
 use clap::{App, Arg};
+use encoding_rs::UTF_8;
 use serde_json::{Value, Error};
 
 use std::fs::File;
@@ -50,10 +52,15 @@ fn main() {
     })
 }
 
+/// Safely decode from a Read trait to a String by correctly handling potential
+/// UTF-8 BOMs, etc. To do this, we go via the encoding_rs rather than reading
+/// directly to a Rust string which leaves the BOM in place, causing Serde to
+/// fail when it sees a codepoint it knows isn't valid JSON.
 fn string_from_reader(reader: &mut Read) -> Result<String, std::io::Error> {
-    let mut buffer = String::new();
-    reader.read_to_string(&mut buffer)?;
-    Ok(buffer)
+    let mut buffer = Vec::new();
+    reader.read_to_end(&mut buffer)?;
+    let (res, _) = UTF_8.decode_with_bom_removal(&buffer);
+    Ok(res.to_string())
 }
 
 fn find_invalid_json(json: &str) -> Option<Error> {
