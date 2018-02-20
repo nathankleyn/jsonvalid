@@ -10,6 +10,9 @@ readme = "README.md"
 [badges]
 travis-ci = { repository = "nathankleyn/jsonvalid" }
 
+[profile.release]
+lto = true
+
 [dependencies]
 clap = "2.30.0"
 encoding_rs = "0.7.2"
